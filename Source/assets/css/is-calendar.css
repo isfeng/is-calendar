@@ -18,6 +18,7 @@ div.calendar ul {
 div.calendar ul li {
   float: left;
   width: 30px;
+  list-style: none;
 }
 div.calendar ul.dates li {
   color: gray;
