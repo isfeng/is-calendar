@@ -1,0 +1,51 @@
+div.calendar {
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+  border-radius: 25px;
+  padding: 10px 0 12px 10px;
+  width: 216px;
+  border: 1px solid gray;
+  z-index: 99999;
+  background-color: white;
+  margin-left: 5px;
+}
+div.calendar ul {
+  margin: 0;
+  padding: 0;
+}
+div.calendar ul li {
+  float: left;
+  width: 30px;
+}
+div.calendar ul.dates li {
+  color: gray;
+  cursor: pointer;
+  margin-top: 5px;
+}
+div.calendar ul.days li {
+  color: orange;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+div.calendar .caption {
+  width: 200px;
+  margin: auto;
+  text-align: center;
+  margin: 5px 0 5px 0;
+  color: black;
+  font-weight: bolder;
+}
+div.calendar .caption a {
+  cursor: pointer;
+}
+div.calendar .caption a.previous {
+  float: left;
+}
+div.calendar .caption a.next {
+  float: right;
+}
+div.calendar .caption h4 {
+  display: inline;
+}
