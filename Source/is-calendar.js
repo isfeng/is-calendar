@@ -34,11 +34,11 @@ var isCalendar = new Class
 		this.element = document.id(el);
 		this.setOptions(options);
 		this.currentDate = new Date();
-		this.element.addEvent('click', this.render.bind(this));
+		this.element.addEvent('click', this.render.bind(this,true));
 		this.element.set('value',this.currentDate.format(this.options.format));
 	},
 	
-	render: function()
+	render: function(reveal)
 	{
 		if(this.calendar)
 			this.calendar.dispose();
@@ -74,7 +74,7 @@ var isCalendar = new Class
 		//render dates
 		var dates = new Element('ul', {'class': 'dates'});
 		var lastDay =this.currentDate.getLastDayOfMonth();
-		new Element('li',{text: '01', styles:{'margin-left': this.firstDayOfCurrentMonth()*30+'px'}}).inject(dates, 'bottom');
+		new Element('li',{text: '01', styles:{'margin-left': this._firstDayOfCurrentMonth()*30+'px'}}).inject(dates, 'bottom');
 		for(i=2; i<=lastDay; i++)
 		{
 			if(i<10)
@@ -88,17 +88,32 @@ var isCalendar = new Class
 		lis.each(function(item, index){
 			item.addEvent('click', function() {
 				this.element.set('value', this.currentDate.format('%Y-%m-')+item.innerHTML);
-				this.calendar.dispose();
+				this.calendar.fade('out');
+				this.calendar.set('tween',{
+					onComplete: function(){
+						this.calendar.dispose();
+						this.postion = null;
+					}.bind(this)
+				}).fade('out');
 			}.bind(this));
 		}.bind(this));
 		
 		dates.inject(this.calendar, 'bottom');
+		
+		if(reveal)
+			this.calendar.hide();
+
 		this.calendar.inject(this.element, 'after');
+	
 		this.calendar.position({
 			relativeTo: this.element,
 			position: 'topright',
 		    edge: 'topleft'
 		});
+		
+		if(reveal)
+			this.calendar.reveal();
+		
 	},
 	
 	next: function()
@@ -113,7 +128,7 @@ var isCalendar = new Class
 		this.render();
 	},
 	
-	firstDayOfCurrentMonth: function()
+	_firstDayOfCurrentMonth: function()
 	{
 		var firstDate = this.currentDate.clone();
 		firstDate.set('date', 1);
@@ -124,7 +139,7 @@ var isCalendar = new Class
 Element.implement({
 
   makeCalendar: function(options){
-    var calendar = new isCalendar(this);
+    var calendar = new isCalendar(this, options);
     return calendar;
   }
 

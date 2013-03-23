@@ -9,13 +9,16 @@
     <link rel="stylesheet" href="../Source/assets/css/is-calendar.css" type="text/css" media="screen" charset="utf-8" />
 </head>
 <body>
-
-	<input type="text" id="cal"/>
-
+        <ul>
+                <li><input type="text" id="cal"/></li>
+                <li><input type="text" id="cal2"/></li>
+        </ul>
+	
     <script type="text/javascript">
 
         window.addEvent('domready', function(){
         	$('cal').makeCalendar();
+            $('cal2').makeCalendar();
         });
 
     </script>
