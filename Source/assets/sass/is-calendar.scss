@@ -6,7 +6,6 @@ div.calendar{
 	width: 216px;
 	border: 1px solid gray;
 	z-index: 99999;
-	background-color: white;
 	margin-left: 5px;
 	ul {
 		margin: 0;
@@ -17,12 +16,10 @@ div.calendar{
 			list-style: none;
 		}
 		&.dates li{
-			color: gray;
 			cursor: pointer;
 			margin-top:5px ;
 		}
-		&.days li{
-			color: orange;
+		&.week li{
 			margin-bottom:5px;
 			font-weight: bold;
 		}
@@ -32,9 +29,7 @@ div.calendar{
 		margin: auto;
 		text-align: center;
 		margin: 5px 0 5px 0;
-		color: black;
 		font-weight: bolder;
-
 		a {
 			cursor: pointer;
 			&.previous{

@@ -26,7 +26,11 @@ var isCalendar = new Class
 	element: null,
 	
 	options: {
-		format: '%Y-%m-%d'
+		format: '%Y-%m-%d',
+		bg_color: 'white',
+		date_Color: 'gray',
+		week_color: 'orange',
+		caption_color: 'black'
 	},
 
 	initialize: function(el, options)
@@ -43,9 +47,10 @@ var isCalendar = new Class
 		if(this.calendar)
 			this.calendar.dispose();
 
-		this.calendar = new Element('div' ,{'class': 'calendar'});
+		this.calendar = new Element('div' ,{'class': 'calendar'}).setStyle('background-color',this.options.bg_color);
+		
 		//render title
-		var caption = new Element('div' ,{'class': 'caption'});
+		var caption = new Element('div' ,{'class': 'caption'}).setStyle('color',this.options.caption_color);
 		var previousLink = new Element('a', {'class': 'previous',html: '&lt;'});
 		previousLink.inject(caption, 'bottom');
 		previousLink.addEvent('click', this.previous.bind(this));
@@ -61,15 +66,15 @@ var isCalendar = new Class
 		caption.inject(this.calendar, 'bottom');
 		
 		//render week title
-		var days = new Element('ul', {'class': 'days'});
-		new Element('li',{text: 'Su'}).inject(days, 'bottom');
-		new Element('li',{text: 'Mo'}).inject(days, 'bottom');
-		new Element('li',{text: 'Tu'}).inject(days, 'bottom');
-		new Element('li',{text: 'We'}).inject(days, 'bottom');
-		new Element('li',{text: 'Th'}).inject(days, 'bottom');
-		new Element('li',{text: 'Fr'}).inject(days, 'bottom');
-		new Element('li',{text: 'Sa'}).inject(days, 'bottom');
-		days.inject(this.calendar, 'bottom');
+		var week = new Element('ul', {'class': 'week'}).setStyle('color',this.options.week_color);
+		new Element('li',{text: 'Su'}).inject(week, 'bottom');
+		new Element('li',{text: 'Mo'}).inject(week, 'bottom');
+		new Element('li',{text: 'Tu'}).inject(week, 'bottom');
+		new Element('li',{text: 'We'}).inject(week, 'bottom');
+		new Element('li',{text: 'Th'}).inject(week, 'bottom');
+		new Element('li',{text: 'Fr'}).inject(week, 'bottom');
+		new Element('li',{text: 'Sa'}).inject(week, 'bottom');
+		week.inject(this.calendar, 'bottom');
 		
 		//render dates
 		var dates = new Element('ul', {'class': 'dates'});
