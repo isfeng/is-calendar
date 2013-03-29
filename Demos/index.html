@@ -12,13 +12,26 @@
         <ul>
                 <li><input type="text" id="cal"/></li>
                 <li><input type="text" id="cal2"/></li>
+                <li><input type="text" id="cal3"/></li>
         </ul>
 	
     <script type="text/javascript">
 
         window.addEvent('domready', function(){
         	$('cal').makeCalendar();
-            $('cal2').makeCalendar();
+
+            $('cal2').makeCalendar({
+                onSelectDate: function(d){
+                    alert(d);
+                }
+            });
+
+            $('cal3').makeCalendar({
+                bg_color: 'black',
+                date_color: 'white',
+                week_color: 'orange',
+                caption_color: 'white'
+            });
         });
 
     </script>

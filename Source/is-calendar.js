@@ -28,9 +28,10 @@ var isCalendar = new Class
 	options: {
 		format: '%Y-%m-%d',
 		bg_color: 'white',
-		date_Color: 'gray',
+		date_color: 'gray',
 		week_color: 'orange',
-		caption_color: 'black'
+		caption_color: 'black',
+		onSelectDate: Class.empty
 	},
 
 	initialize: function(el, options)
@@ -79,20 +80,21 @@ var isCalendar = new Class
 		//render dates
 		var dates = new Element('ul', {'class': 'dates'});
 		var lastDay =this.currentDate.getLastDayOfMonth();
-		new Element('li',{text: '01', styles:{'margin-left': this._firstDayOfCurrentMonth()*30+'px'}}).inject(dates, 'bottom');
+		new Element('li',{text: '01', styles:{'color': this.options.date_color, 'margin-left': this._firstDayOfCurrentMonth()*30+'px'}}).inject(dates, 'bottom');
 		for(i=2; i<=lastDay; i++)
 		{
 			if(i<10)
 				litext = '0'+i;
 			else
 				litext = i;
-			new Element('li',{text: litext}).inject(dates, 'bottom');
+			new Element('li',{text: litext}).setStyle('color',this.options.date_color).inject(dates, 'bottom');
 		}
 		
 		var lis = dates.getElements('li');
 		lis.each(function(item, index){
 			item.addEvent('click', function() {
 				this.element.set('value', this.currentDate.format('%Y-%m-')+item.innerHTML);
+				this.fireEvent('selectDate', this.element.get('value'));
 				this.calendar.fade('out');
 				this.calendar.set('tween',{
 					onComplete: function(){
