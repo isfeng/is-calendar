@@ -16,6 +16,22 @@ Snippet code HTML:
 
 Snippet code Javascript:
 
-	#JS
+	#Javascript
 	
-	$("cal").makeCalendar();
+	$('cal').makeCalendar();
+
+	// call back function
+    $('cal2').makeCalendar({
+        onSelectDate: function(d){
+            alert(d);
+        }
+    });
+
+    // change default color
+    $('cal3').makeCalendar({
+        bg_color: 'black',
+        date_color: 'white',
+        week_color: 'orange',
+        caption_color: 'white'
+    });
+
