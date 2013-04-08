@@ -13,6 +13,7 @@
                 <li><input type="text" id="cal"/></li>
                 <li><input type="text" id="cal2"/></li>
                 <li><input type="text" id="cal3"/></li>
+                <li><input type="text" id="cal4"/></li>
         </ul>
 	
     <script type="text/javascript">
@@ -31,6 +32,10 @@
                 date_color: 'white',
                 week_color: 'orange',
                 caption_color: 'white'
+            });
+
+            $('cal4').makeCalendar({
+                position: 'bottomLeft'
             });
         });
 
