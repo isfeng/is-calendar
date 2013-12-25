@@ -1,0 +1,39 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>isCalendar Demo</title>
+    <script src="Demos/assets/javascripts/mootools-core-1.4.5.js" type="text/javascript" charset="utf-8"></script>
+    <script src="Demos/assets/javascripts/mootools-more-1.4.0.1.js" type="text/javascript" charset="utf-8"></script>
+    <script src="Source/is-calendar.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="Source/assets/css/is-calendar.css" type="text/css" media="screen" charset="utf-8" />
+</head>
+<body>
+        <ul style="margin-top:300px;text-align:center; list-style:none">
+            <li><input type="text" id="cal"/><input type="text" id="cal2"/></li>
+            <li><input type="text" id="cal3"/><input type="text" id="cal4"/></li>              
+        </ul>
+    
+    <script type="text/javascript">
+
+        window.addEvent('domready', function(){
+            $('cal').makeCalendar({position: 'topLeft', edge: 'bottomRight'});
+
+            $('cal2').makeCalendar({position: 'topRight', edge: 'bottomLeft'});
+
+            $('cal3').makeCalendar({
+                position: 'bottomLeft',
+                edge: 'topRight',
+                bg_color: 'black',
+                date_color: 'white',
+                week_color: 'orange',
+                caption_color: 'white'
+            });
+
+            $('cal4').makeCalendar({position: 'bottomRight', edge: 'topLeft'});
+        });
+
+    </script>
+    
+</body>
+</html>

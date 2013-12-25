@@ -32,7 +32,8 @@ var isCalendar = new Class
 		week_color: 'orange',
 		caption_color: 'black',
 		position: 'topRight',
-		onSelectDate: Class.empty
+		onSelectDate: Class.empty,
+		edge:'topRight'
 	},
 
 	initialize: function(el, options)
@@ -115,7 +116,8 @@ var isCalendar = new Class
 	
 		this.calendar.position({
 			relativeTo: this.element,
-			position: this.options.position
+			position: this.options.position,
+			edge: this.options.edge
 		});
 		
 		if(reveal)
