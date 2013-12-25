@@ -3,6 +3,18 @@ is-calendar
 
 is-calendar is a very simple date picker for MooTools.
 
+
+Live Demo
+-----------
+
+[http://isfeng.github.io/is-calendar/](http://isfeng.github.io/is-calendar/)
+
+
+Screenshots
+-----------
+![Screenshot](https://raw.github.com/isfeng/is-calendar/master/screenshot.jpg)
+
+
 How to Use
 ----------
 
