@@ -33,7 +33,9 @@ var isCalendar = new Class
 		caption_color: 'black',
 		position: 'topRight',
 		onSelectDate: Class.empty,
-		edge: 'topLeft'
+		edge: 'topLeft',
+		close_button: true,
+    close_text: 'close'
 	},
 
 	initialize: function(el, options)
@@ -51,10 +53,13 @@ var isCalendar = new Class
 			this.calendar.dispose();
 
 		this.calendar = new Element('div' ,{'class': 'calendar'}).setStyle('background-color',this.options.bg_color);
-		
+
 		//render title
 		var caption = new Element('div' ,{'class': 'caption'}).setStyle('color',this.options.caption_color);
 		var previousLink = new Element('a', {'class': 'previous',html: '&lt;'});
+		if (this.options.close_button) {
+			new Element('div', {'class':'close', 'html':this.options.close_text}).addEvent('click', function() { this.parentElement.parentElement.dispose(); }).inject(caption);
+		}
 		previousLink.inject(caption, 'bottom');
 		previousLink.addEvent('click', this.previous.bind(this));
 		
@@ -122,7 +127,6 @@ var isCalendar = new Class
 		
 		if(reveal)
 			this.calendar.reveal();
-		
 	},
 	
 	next: function()

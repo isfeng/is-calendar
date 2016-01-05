@@ -46,3 +46,13 @@ div.calendar .caption a.next {
 div.calendar .caption h4 {
   display: inline;
 }
+div.calendar div.close {
+	margin-top: -13px;
+  line-height: 22px;
+  font-family: arial;
+  cursor: pointer;
+	color: grey;
+	font-size: 10pt;
+  font-weight: normal;
+  text-align: center;
+}
